@@ -1,5 +1,8 @@
+import Image from "next/image";
 import React from "react";
 import { BackgroundLines } from "@/components/ui/background-lines";
+import { CardBody, CardContainer, CardItem } from "../components/ui/3d-card";
+import { Data } from "@/lib/data/data";
 
 function BackgroundLinesDemo() {
   return (
@@ -17,12 +20,26 @@ function BackgroundLinesDemo() {
         </p>
       </BackgroundLines>
 
+      {/* Education */}
+      <div className="flex bg-black text-white items-center justify-center w-full flex-col px-4">
+        <h2 className="bg-clip-text text-transparent text-white text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
+          Education
+        </h2>
 
-      <div className="flex bg-white items-center justify-center w-full flex-col px-4">
-        <h1>
-          
-        </h1>
+        <p>Dean’s Lister, 2022-2023 1st and 2nd Semester</p>
+        <p>Dean’s Lister, 2023-2024 2nd Semester</p>
+        <p>Dean’s Lister, 2024-2025 1st Semester</p>
+
       </div>
+
+      {/* Projects */}
+      <div className="flex bg-black items-center justify-center w-full flex-col px-4">
+        <h2 className="bg-clip-text text-transparent text-white text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
+          College Life
+        </h2>
+      </div>
+
+
     </div>
   );
 }
