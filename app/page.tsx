@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { BackgroundLines } from "@/components/background-lines";
-
+import { Data } from "@/lib/data/data";
 function BackgroundLinesDemo() {
   return (
     <div>
@@ -24,13 +24,24 @@ function BackgroundLinesDemo() {
           Education
         </h2>
 
-        <div className="bg-[#222222] rounded-md container mx-auto p-4">
+        <div className=" container mx-auto p-4 w-full md:w-1/2 justify-center">
 
-          <div className="flex flex-wrap">
-            <p>Dean’s Lister, 2022-2023 1st and 2nd Semester</p>
-            <p>Dean’s Lister, 2023-2024 2nd Semester</p>
-            <p>Dean’s Lister, 2024-2025 1st Semester</p>
-          </div>
+
+
+          {Data.education.map((educations) => (
+            <div className="flex flex-wrap mt-2 bg-[#222222] rounded-md p-2">
+              <div className="w-full md:w-1/6 ">
+                <h1>{educations.school}</h1>
+              </div>
+
+              <div className="w-full md:w-2/3">
+                <h1>Data</h1>
+              </div>
+
+            </div>
+          ))}
+
+
 
         </div>
 
