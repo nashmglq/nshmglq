@@ -24,9 +24,15 @@ function BackgroundLinesDemo() {
           Education
         </h2>
 
-        <p>Dean’s Lister, 2022-2023 1st and 2nd Semester</p>
-        <p>Dean’s Lister, 2023-2024 2nd Semester</p>
-        <p>Dean’s Lister, 2024-2025 1st Semester</p>
+        <div className="bg-[#222222] rounded-md container mx-auto p-4">
+
+          <div className="flex flex-wrap">
+            <p>Dean’s Lister, 2022-2023 1st and 2nd Semester</p>
+            <p>Dean’s Lister, 2023-2024 2nd Semester</p>
+            <p>Dean’s Lister, 2024-2025 1st Semester</p>
+          </div>
+
+        </div>
 
       </div>
 
@@ -36,7 +42,7 @@ function BackgroundLinesDemo() {
           Projects
         </h2>
 
-         
+
       </div>
 
 
