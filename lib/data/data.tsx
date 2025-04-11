@@ -98,6 +98,8 @@ export const Data = {
          description: "Food Website for Casita’s Birria Kitchen",
          logoUrl: { logo1: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg", logo2: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg", logo3: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg" }
       }
-   ]
+   ],
+
+
 
 }
