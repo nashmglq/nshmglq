@@ -266,7 +266,7 @@ function NashPortfolio() {
               Let's <br />
               <FlipWords
                 words={["Connect.", "Collaborate.", "Create.", "Build.", "Innovate."]}
-                duration={3000}
+                duration={2400}
                 className="text-2xl md:text-4xl lg:text-7xl text-white font-bold"
               />
 
