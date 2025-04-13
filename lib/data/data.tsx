@@ -47,7 +47,7 @@ export const Data = {
       {
          title: "Programming Language",
          logoUrl: { logo1: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg", logo2: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
-         description: "I’m proficient in JavaScript and Python, which I use for both web development and backend programming."
+         description: "I use JavaScript and Python for web development, backend programming, and practicing logic."
       },
       {
          title: "Markup & Styling Languages",
