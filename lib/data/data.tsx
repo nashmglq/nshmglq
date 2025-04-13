@@ -33,7 +33,7 @@ export const Data = {
       {
          title: "Backend Frameworks",
          logoUrl: {
-            logo1: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+            logo1: "images/techstack/express-white.png",
             logo2: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
          },
          description: "I use Node.js with Express to build APIs, manage server-side logic, and connect to databases for storing and retrieving data."
@@ -61,7 +61,7 @@ export const Data = {
       {
          title: "External Tools",
          logoUrl: {
-            logo1: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg", logo2: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", logo3: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+            logo1: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg", logo2: "images/techstack/github-white.png", logo3: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
          },
          description: "I use Git for version control, GitHub for collaborative development, and Figma for designing UI/UX prototypes and mockups."
       }
