@@ -59,6 +59,15 @@ export const Data = {
          description: "I use Bootstrap for quickly building responsive layouts and Tailwind CSS for utility-first styling, enabling customizable and efficient designs."
       },
       {
+         title: "Databases",
+         logoUrl: {
+            logo1: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+            logo2: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"
+         },
+         description: "I use MySQL for managing relational data in larger projects and SQLite for lightweight, file-based storage in smaller applications."
+      }
+      ,
+      {
          title: "External Tools",
          logoUrl: {
             logo1: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg", logo2: "images/techstack/github-white.png", logo3: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
@@ -69,37 +78,37 @@ export const Data = {
 
    project: [
       {
-        title: "Y",
-        imageProj: "images/projects/ySS.png",
-        description: "This is my first full-stack project using the MERN stack and MySQL—a social media platform for sharing thoughts and opinions.",
-        techStack: ["Express", "Node.js", "MySQL", "React"]
+         title: "Y",
+         imageProj: "images/projects/ySS.png",
+         description: "This is my first full-stack project using the MERN stack and MySQL—a social media platform for sharing thoughts and opinions.",
+         techStack: ["Express", "Node.js", "MySQL", "React"]
       },
       {
-        title: "J3J3PT",
-        imageProj: "images/projects/j3j3ptSS.png",
-        description: "My first AI-integrated full-stack project: a 'Jejemon' chatbot built with Gemini, Express.js, Node.js, and React.js.",
-        techStack: ["Express", "Node.js", "React", "Gemini (Google AI)"]
+         title: "J3J3PT",
+         imageProj: "images/projects/j3j3ptSS.png",
+         description: "My first AI-integrated full-stack project: a 'Jejemon' chatbot built with Gemini, Express.js, Node.js, and React.js.",
+         techStack: ["Express", "Node.js", "React", "Gemini (Google AI)"]
       },
       {
-        title: "KeepItProfessional",
-        imageProj: "images/projects/keepitprofessionalSS.png",
-        description: "An AI-powered paraphraser that refines casual text into a polished, professional message. Built with Next.js, Express.js, Node.js, and the Gemini API.",
-        techStack: ["Express", "Node.js", "Next.js", "Gemini (Google AI)"]
+         title: "KeepItProfessional",
+         imageProj: "images/projects/keepitprofessionalSS.png",
+         description: "An AI-powered paraphraser that refines casual text into a polished, professional message. Built with Next.js, Express.js, Node.js, and the Gemini API.",
+         techStack: ["Express", "Node.js", "Next.js", "Gemini (Google AI)"]
       },
       {
-        title: "Shareable",
-        imageProj: "images/projects/shareableSS.png",
-        description: "A subscription website where user can subscribe to their favorite artist, content creator, and more.",
-        techStack: ["Django REST", "SQLite", "React"]
+         title: "Shareable",
+         imageProj: "images/projects/shareableSS.png",
+         description: "A subscription website where user can subscribe to their favorite artist, content creator, and more.",
+         techStack: ["Django REST", "SQLite", "React"]
       },
       {
-        title: "Casita's",
-        imageProj: "images/projects/casitasSS.png",
-        description: "Food Website for Casita’s Birria Kitchen",
-        techStack: ["HTML5", "CSS3", "Bootstrap"]
+         title: "Casita's",
+         imageProj: "images/projects/casitasSS.png",
+         description: "Food Website for Casita’s Birria Kitchen",
+         techStack: ["HTML5", "CSS3", "Bootstrap"]
       }
-    ]
-    
+   ]
+
 
 
 }
