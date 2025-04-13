@@ -119,7 +119,7 @@ function NashPortfolio() {
           animate={isEducationVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-r from-cyan-400 to-teal-400 
+          <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-r from-sky-500 to-blue-600
           text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
             Education
           </h2>
