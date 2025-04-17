@@ -200,7 +200,7 @@ function NashPortfolio() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-r from-blue-300 via-indigo-400 to-violet-400
-           text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
+     text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
             Projects I've worked with.
           </h2>
           <div className="container mx-auto">
@@ -208,38 +208,39 @@ function NashPortfolio() {
               {Data.project.map((project, index) => (
                 <motion.div
                   className="w-full md:w-1/3 sm:w-1/4 m-2 min-h-40 sm:min-h-48 md:min-h-56"
-
                   key={index}
                   initial={{ opacity: 0, x: -50 }}
                   animate={isProjectVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                   transition={{ duration: 0.5, delay: index * 0.2 + 0.3, ease: "easeOut" }}
                 >
                   <CardContainer className="w-full h-full" containerClassName="w-full h-full">
-                  <CardBody className="bg-gradient-to-b from-zinc-900 to-slate-900 rounded-md p-2 w-full h-full">
+                    <CardBody className="bg-gradient-to-b from-zinc-900 to-slate-900 rounded-md p-2 w-full h-full flex flex-col">
                       <CardItem
                         translateZ={20}
                         className="w-full"
                       >
-                        <h1 className="text-white bg-gradient-to-b md:text-4xl lg:text-3xl font-sans font-bold p-1">{project.title}</h1>
+                        <h1 className="text-white bg-gradient-to-b text-lg sm:text-lg md:text-xl lg:text-2xl font-sans font-bold p-1 overflow-hidden break-words hyphens-auto">{project.title}</h1>
                       </CardItem>
                       <CardItem
                         translateZ={50}
-                        className="w-full"
+                        className="w-full flex-grow"
                       >
                         <img
                           src={project.imageProj}
                           alt={project.title}
-                          className="rounded-md p-2 w-full object-cover"
+                          className="rounded-md p-2 w-full h-full object-cover"
                         />
                       </CardItem>
                       <CardItem
                         translateZ={20}
                         className="w-full"
                       >
-                        <h3 className="text-white max-w-xl mx-auto text-sm md:text-md text-neutral-700 p-2">{project.description}</h3>
-                        {Object.values(project.techStack).map((icons, index) => (
-                          <p key={index} className="inline-block m-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-md px-2 text-white">{icons}</p>
-                        ))}
+                        <h3 className="text-white max-w-xl mx-auto text-sm md:text-md text-neutral-200 p-2 overflow-hidden">{project.description}</h3>
+                        <div className="flex flex-wrap">
+                          {Object.values(project.techStack).map((icons, index) => (
+                            <p key={index} className="inline-block m-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-md px-2 py-1 text-white text-xs">{icons}</p>
+                          ))}
+                        </div>
                       </CardItem>
                     </CardBody>
                   </CardContainer>
@@ -249,7 +250,6 @@ function NashPortfolio() {
           </div>
         </motion.div>
       </div>
-
       {/* Footer */}
       <div className="flex bg-black items-center justify-center w-full h-screen flex-col px-4 py-20" >
         <motion.div
