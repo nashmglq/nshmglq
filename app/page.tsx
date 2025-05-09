@@ -214,7 +214,7 @@ function NashPortfolio() {
                   transition={{ duration: 0.5, delay: index * 0.2 + 0.3, ease: "easeOut" }}
                 >
                   <CardContainer className="w-full h-full" containerClassName="w-full h-full">
-                    {/* <a href={project.link}> */}
+                    <a href={project.link}>
                       <CardBody className="bg-gradient-to-b from-zinc-900 to-slate-900 rounded-md p-2 w-full h-full flex flex-col">
                         <CardItem
                           translateZ={20}
@@ -244,7 +244,7 @@ function NashPortfolio() {
                           </div>
                         </CardItem>
                       </CardBody>
-                    {/* </a> */}
+                    </a>
                   </CardContainer>
                 </motion.div>
               ))}
