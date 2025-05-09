@@ -81,31 +81,44 @@ export const Data = {
          title: "Y",
          imageProj: "images/projects/ySS.png",
          description: "This is my first full-stack project, a social media platform for sharing thoughts and opinions.",
-         techStack: ["Express", "Node.js", "MySQL", "React"]
+         techStack: ["Express", "Node.js", "MySQL", "React"],
+         link : "https://github.com/nashmglq/y"
+        
       },
       {
          title: "J3J3PT",
          imageProj: "images/projects/j3j3ptSS.png",
          description: "My first AI-integrated full-stack project: a 'Jejemon' chatbot.",
-         techStack: ["Express", "Node.js", "React", "Gemini (Google AI)"]
+         techStack: ["Express", "Node.js", "React", "Gemini (Google AI)"],
+         link : "https://github.com/nashmglq/j3j3pt"
+      },
+      {
+         title: "Streak",
+         imageProj: "images/projects/streak.png",
+         description: "Streak: an AI-powered streak counter, motivator, and health assistant.",
+         techStack: ["Express", "Node.js", "React", "Gemini (Google AI)"],
+          link: "https://github.com/nashmglq/streak"
       },
       {
          title: "KeepItProfessional",
          imageProj: "images/projects/keepitprofessionalSS.png",
          description: "An AI-powered paraphraser that refines casual text into a polished, professional message.",
-         techStack: ["Express", "Node.js", "Next.js", "Gemini (Google AI)"]
+         techStack: ["Express", "Node.js", "Next.js", "Gemini (Google AI)"],
+         link : "https://github.com/nashmglq/keepitprofessional/"
       },
       {
          title: "Shareable",
          imageProj: "images/projects/shareableSS.png",
          description: "A subscription website where user can subscribe to their favorite artist, content creator, and more.",
-         techStack: ["Django REST", "SQLite", "React"]
+         techStack: ["Django REST", "SQLite", "React"],
+         link : "https://github.com/ikawari-s/shareable"
       },
       {
          title: "Casita's",
          imageProj: "images/projects/casitasSS.png",
          description: "Food Website for Casita’s Birria Kitchen",
-         techStack: ["Express", "Node.js", "HTML5", "CSS3", "Bootstrap"]
+         techStack: ["Express", "Node.js", "HTML5", "CSS3", "Bootstrap"],
+         link : "https://github.com/nashmglq/"
       }
    ]
 

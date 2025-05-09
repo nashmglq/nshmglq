@@ -214,35 +214,37 @@ function NashPortfolio() {
                   transition={{ duration: 0.5, delay: index * 0.2 + 0.3, ease: "easeOut" }}
                 >
                   <CardContainer className="w-full h-full" containerClassName="w-full h-full">
-                    <CardBody className="bg-gradient-to-b from-zinc-900 to-slate-900 rounded-md p-2 w-full h-full flex flex-col">
-                      <CardItem
-                        translateZ={20}
-                        className="w-full"
-                      >
-                        <h1 className="text-white bg-gradient-to-b text-lg sm:text-lg md:text-xl lg:text-2xl font-sans font-bold p-1 overflow-hidden break-words hyphens-auto">{project.title}</h1>
-                      </CardItem>
-                      <CardItem
-                        translateZ={50}
-                        className="w-full flex-grow"
-                      >
-                        <img
-                          src={project.imageProj}
-                          alt={project.title}
-                          className="rounded-md p-2 w-full h-full object-cover"
-                        />
-                      </CardItem>
-                      <CardItem
-                        translateZ={20}
-                        className="w-full"
-                      >
-                        <h3 className="text-white max-w-xl mx-auto text-sm md:text-md text-neutral-200 p-2 overflow-hidden">{project.description}</h3>
-                        <div className="flex flex-wrap">
-                          {Object.values(project.techStack).map((icons, index) => (
-                            <p key={index} className="inline-block m-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-md px-2 py-1 text-white text-xs">{icons}</p>
-                          ))}
-                        </div>
-                      </CardItem>
-                    </CardBody>
+                    {/* <a href={project.link}> */}
+                      <CardBody className="bg-gradient-to-b from-zinc-900 to-slate-900 rounded-md p-2 w-full h-full flex flex-col">
+                        <CardItem
+                          translateZ={20}
+                          className="w-full"
+                        >
+                          <h1 className="text-white bg-gradient-to-b text-lg sm:text-lg md:text-xl lg:text-2xl font-sans font-bold p-1 overflow-hidden break-words hyphens-auto">{project.title}</h1>
+                        </CardItem>
+                        <CardItem
+                          translateZ={50}
+                          className="w-full flex-grow"
+                        >
+                          <img
+                            src={project.imageProj}
+                            alt={project.title}
+                            className="rounded-md p-2 w-full h-full object-cover"
+                          />
+                        </CardItem>
+                        <CardItem
+                          translateZ={20}
+                          className="w-full"
+                        >
+                          <h3 className="text-white max-w-xl mx-auto text-sm md:text-md text-neutral-200 p-2 overflow-hidden">{project.description}</h3>
+                          <div className="flex flex-wrap">
+                            {Object.values(project.techStack).map((icons, index) => (
+                              <p key={index} className="inline-block m-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-md px-2 py-1 text-white text-xs">{icons}</p>
+                            ))}
+                          </div>
+                        </CardItem>
+                      </CardBody>
+                    {/* </a> */}
                   </CardContainer>
                 </motion.div>
               ))}
