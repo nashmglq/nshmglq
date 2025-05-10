@@ -118,7 +118,7 @@ export const Data = {
          imageProj: "images/projects/casitasSS.png",
          description: "Food Website for Casita’s Birria Kitchen",
          techStack: ["Express", "Node.js", "HTML5", "CSS3", "Bootstrap"],
-         link : "https://github.com/nashmglq/"
+         link : "https://github.com/nashmglq/casita-s"
       }
    ]
 
