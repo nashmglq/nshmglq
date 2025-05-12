@@ -62,9 +62,9 @@ export const Data = {
          title: "Databases",
          logoUrl: {
             logo1: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
-            logo2: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"
+            logo2: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
          },
-         description: "I use MySQL for managing relational data in larger projects and SQLite for lightweight, file-based storage in smaller applications."
+         description: "I use MySQL and PostgreSQL for my project databases because of their reliability, flexibility, and strong support for structured data."
       }
       ,
       {
