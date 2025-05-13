@@ -284,7 +284,7 @@ function NashPortfolio() {
               <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" className="text-blue-700 hover:text-blue-500 duration-300 hover:scale-110">
                 <Linkedin size={54} />
               </a>
-              <a href="https://www.instagram.com/vn_shq/" className="text-pink-600 hover:text-pink-400  hover:scale-110 duration-300">
+              <a href="https://www.instagram.com/vn_nshq/" className="text-pink-600 hover:text-pink-400  hover:scale-110 duration-300">
                 <Instagram size={54} />
               </a>
             </div>
