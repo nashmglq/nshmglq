@@ -190,7 +190,7 @@ function NashPortfolio() {
 
       {/* Projects */}
       <div
-        className="flex bg-black items-center justify-center w-full flex-col px-4 py-16"
+        className="flex bg-black items-center justify-center w-full flex-col px-4 py-16 sm:px-20 sm:py-20"
         ref={projectRef}
       >
         <motion.div
@@ -204,40 +204,40 @@ function NashPortfolio() {
             Projects I've worked with.
           </h2>
           <div className="container mx-auto">
-            <div className="flex flex-wrap mt-2 justify-center text-white">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-2 justify-center text-white">
               {Data.project.map((project, index) => (
                 <motion.div
-                  className="w-full md:w-1/3 sm:w-1/4 m-2 min-h-40 sm:min-h-48 md:min-h-56"
+                  className="h-full"
                   key={index}
                   initial={{ opacity: 0, x: -50 }}
                   animate={isProjectVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                   transition={{ duration: 0.5, delay: index * 0.2 + 0.3, ease: "easeOut" }}
                 >
                   <CardContainer className="w-full h-full" containerClassName="w-full h-full">
-                    <a href={project.link}>
-                      <CardBody className="bg-gradient-to-b from-zinc-900 to-slate-900 rounded-md p-2 w-full h-full flex flex-col">
+                    <a href={project.link} className="block h-full">
+                      <CardBody className="bg-gradient-to-b from-zinc-900 to-slate-900 rounded-md p-4 w-full h-full flex flex-col">
                         <CardItem
                           translateZ={20}
                           className="w-full"
                         >
-                          <h1 className="text-white bg-gradient-to-b text-lg sm:text-lg md:text-xl lg:text-2xl font-sans font-bold p-1 overflow-hidden break-words hyphens-auto">{project.title}</h1>
+                          <h1 className="text-white bg-gradient-to-b text-lg sm:text-lg md:text-xl lg:text-2xl font-sans font-bold mb-2 overflow-hidden text-ellipsis">{project.title}</h1>
                         </CardItem>
                         <CardItem
                           translateZ={50}
-                          className="w-full flex-grow"
+                          className="w-full flex-grow aspect-video"
                         >
                           <img
                             src={project.imageProj}
                             alt={project.title}
-                            className="rounded-md p-2 w-full h-full object-cover"
+                            className="rounded-md w-full h-full object-cover"
                           />
                         </CardItem>
                         <CardItem
                           translateZ={20}
-                          className="w-full"
+                          className="w-full mt-2"
                         >
-                          <h3 className="text-white max-w-xl mx-auto text-sm md:text-md text-neutral-200 p-2 overflow-hidden">{project.description}</h3>
-                          <div className="flex flex-wrap">
+                          <h3 className="text-neutral-200 text-sm line-clamp-2 h-10 overflow-hidden">{project.description}</h3>
+                          <div className="flex flex-wrap mt-2">
                             {Object.values(project.techStack).map((icons, index) => (
                               <p key={index} className="inline-block m-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-md px-2 py-1 text-white text-xs">{icons}</p>
                             ))}
