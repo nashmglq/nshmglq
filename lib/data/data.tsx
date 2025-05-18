@@ -88,7 +88,7 @@ export const Data = {
       {
          title: "J3J3PT",
          imageProj: "images/projects/j3j3ptSS.png",
-         description: "My first AI-integrated full-stack project: a 'Jejemon' chatbot.",
+         description: "This is my first AI-integrated full-stack project: a 'Jejemon' chatbot for playful conversations.",
          techStack: ["Express", "Node.js", "React", "Gemini (Google AI)"],
          link : "https://github.com/nashmglq/j3j3pt"
       },
@@ -116,7 +116,7 @@ export const Data = {
       {
          title: "Casita's",
          imageProj: "images/projects/casitasSS.png",
-         description: "Food Website for Casita’s Birria Kitchen",
+         description: "A website for Casita's Birria Kitchen featuring their menu, authentic flavors, and contact info.",
          techStack: ["Express", "Node.js", "HTML5", "CSS3", "Bootstrap"],
          link : "https://github.com/nashmglq/casita-s"
       }
