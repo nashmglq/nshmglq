@@ -5,6 +5,61 @@ import { X, Send, Sparkles, MessageCircle } from "lucide-react";
 import { createPortal } from "react-dom";
 import { chatState } from "../../store/state";
 
+const formatMessage = (text) => {
+  if (!text) return text;
+
+  const lines = text.split("\n");
+
+  return lines.map((line, index) => {
+    if (line.trim().match(/^[-•*]\s/)) {
+      const content = line.replace(/^[-•*]\s/, "").trim();
+      return (
+        <div key={index} className="flex items-start space-x-2 my-1">
+          <span className="text-purple-300 mt-1">•</span>
+          <span>{formatInlineText(content)}</span>
+        </div>
+      );
+    }
+
+    if (line.trim().match(/^\d+\.\s/)) {
+      const match = line.trim().match(/^(\d+)\.\s(.+)/);
+      if (match) {
+        const [, number, content] = match;
+        return (
+          <div key={index} className="flex items-start space-x-2 my-1">
+            <span className="text-purple-300 mt-1 font-medium">{number}.</span>
+            <span>{formatInlineText(content)}</span>
+          </div>
+        );
+      }
+    }
+
+    if (line.trim()) {
+      return (
+        <div key={index} className="my-1">
+          {formatInlineText(line)}
+        </div>
+      );
+    }
+
+    return <div key={index} className="h-2" />;
+  });
+};
+
+const formatInlineText = (text) => {
+  text = text.replace(
+    /\*\*(.*?)\*\*/g,
+    '<strong class="font-semibold">$1</strong>'
+  );
+
+  text = text.replace(
+    /(?<!\*)\*([^*]+?)\*(?!\*)/g,
+    '<em class="italic">$1</em>'
+  );
+
+  return <span dangerouslySetInnerHTML={{ __html: text }} />;
+};
+
 export const ChatBot = () => {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
@@ -23,7 +78,7 @@ export const ChatBot = () => {
 
     try {
       setListMessage((prev) => [...prev, { from: "user", text: userMessage }]);
-      setUserMessage(""); // Clear input
+      setUserMessage("");
       await chat({ userMessage, listMessage });
     } catch (err) {
       setError("Something went wrong. Please try again.");
@@ -61,13 +116,19 @@ export const ChatBot = () => {
           <div className="relative flex items-center justify-center">
             {open ? <X size={24} /> : <MessageCircle size={24} />}
           </div>
-          {!open && <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>}
+          {!open && (
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+          )}
         </button>
       </div>
 
-      <div className={`fixed bottom-24 right-6 w-80 sm:w-96 transition-all duration-500 z-40 ${
-        open ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95 pointer-events-none'
-      }`}>
+      <div
+        className={`fixed bottom-24 right-6 w-80 sm:w-96 transition-all duration-500 z-40 ${
+          open
+            ? "opacity-100 translate-y-0 scale-100"
+            : "opacity-0 translate-y-8 scale-95 pointer-events-none"
+        }`}
+      >
         <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl overflow-hidden">
           <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-4">
             <div className="flex items-center justify-between">
@@ -79,12 +140,14 @@ export const ChatBot = () => {
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full"></div>
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-sm">AI Assistant</h3>
+                  <h3 className="text-white font-semibold text-sm">
+                    AI Assistant
+                  </h3>
                   <p className="text-white/70 text-xs">Online</p>
                 </div>
               </div>
-              <button 
-                onClick={() => setOpen(false)} 
+              <button
+                onClick={() => setOpen(false)}
                 className="text-white/70 hover:text-white hover:bg-white/10 p-2 rounded-lg transition-all"
               >
                 <X size={16} />
@@ -94,13 +157,20 @@ export const ChatBot = () => {
 
           <div className="h-80 overflow-y-auto p-4 space-y-4 bg-slate-900/90">
             {listMessage.map((msg, i) => (
-              <div key={i} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
-                <div className={`max-w-[85%] p-3 rounded-2xl text-sm ${
-                  msg.from === "user"
-                    ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white"
-                    : "bg-white/10 text-white border border-white/10"
-                }`}>
-                  {msg.text}
+              <div
+                key={i}
+                className={`flex ${
+                  msg.from === "user" ? "justify-end" : "justify-start"
+                }`}
+              >
+                <div
+                  className={`max-w-[85%] p-3 rounded-2xl text-sm ${
+                    msg.from === "user"
+                      ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white"
+                      : "bg-white/10 text-white border border-white/10"
+                  }`}
+                >
+                  {msg.from === "ai" ? formatMessage(msg.text) : msg.text}
                 </div>
               </div>
             ))}
@@ -114,7 +184,9 @@ export const ChatBot = () => {
                       <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce delay-100"></div>
                       <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce delay-200"></div>
                     </div>
-                    <span className="text-white/70 text-xs">AI is typing...</span>
+                    <span className="text-white/70 text-xs">
+                      AI is typing...
+                    </span>
                   </div>
                 </div>
               </div>
@@ -124,9 +196,7 @@ export const ChatBot = () => {
           </div>
 
           <div className="p-4 bg-slate-800/90 border-t border-white/10">
-            {error && (
-              <p className="text-red-400 text-sm pb-2">{error}</p>
-            )}
+            {error && <p className="text-red-400 text-sm pb-2">{error}</p>}
             <div className="flex items-center space-x-2">
               <div className="flex-1">
                 <textarea
