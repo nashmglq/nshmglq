@@ -23,8 +23,30 @@ function NashPortfolio() {
   const introRef = useRef(null);
 
   const [currentSlide, setCurrentSlide] = useState(0);
-  const projectsPerSlide = 3;
-  const totalSlides = Math.ceil(Data.project.length / projectsPerSlide);
+  const [projectsPerSlide, setProjectsPerSlide] = useState(3);
+  const [totalSlides, setTotalSlides] = useState(Math.ceil(Data.project.length / 3));
+
+  useEffect(() => {
+    const updateProjectsPerSlide = () => {
+      if (window.innerWidth >= 1024) {
+        setProjectsPerSlide(3);
+      } else if (window.innerWidth >= 768) {
+        setProjectsPerSlide(2);
+      } else {
+        setProjectsPerSlide(1);
+      }
+    };
+
+    updateProjectsPerSlide();
+    window.addEventListener('resize', updateProjectsPerSlide);
+
+    return () => window.removeEventListener('resize', updateProjectsPerSlide);
+  }, []);
+
+  useEffect(() => {
+    setTotalSlides(Math.ceil(Data.project.length / projectsPerSlide));
+    setCurrentSlide(0);
+  }, [projectsPerSlide]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
@@ -33,7 +55,6 @@ function NashPortfolio() {
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
-
 
   useEffect(() => {
     const observerEduc = new IntersectionObserver(
@@ -92,7 +113,6 @@ function NashPortfolio() {
   return (
     <div className="bg-black">
       <ChatBot/>
-      {/* Wrap in div of h-screen and w-full to contain the background lines */}
       <div className="relative w-full h-screen">
         <BackgroundLines className="absolute inset-0 w-full h-full bg-black">
           <div className="relative z-10 flex items-center justify-center w-full h-full px-4">
@@ -122,7 +142,6 @@ function NashPortfolio() {
         </BackgroundLines>
       </div>
 
-      {/* Education */}
       <div
         className="flex bg-black text-white items-center justify-center w-full flex-col px-4 py-16"
         ref={educationRef}
@@ -166,7 +185,6 @@ function NashPortfolio() {
         </motion.div>
       </div>
 
-      {/* TechStack */}
       <div
         className="flex bg-black items-center justify-center w-full flex-col px-4 py-16"
         ref={techStackRef}
@@ -202,7 +220,6 @@ function NashPortfolio() {
         </motion.div>
       </div>
 
-      {/* Projects */}
       <div
         className="flex bg-black items-center justify-center w-full flex-col px-4 py-16 sm:px-20 sm:py-20"
         ref={projectRef}
@@ -218,9 +235,7 @@ function NashPortfolio() {
           </h2>
 
           <div className="container mx-auto relative">
-            {/* Desktop Layout - Buttons on sides */}
             <div className="hidden md:block">
-              {/* Left Button */}
               <button
                 onClick={prevSlide}
                 className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-16 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white p-3 rounded-full transition-all duration-300 disabled:opacity-50 z-10"
@@ -229,7 +244,6 @@ function NashPortfolio() {
                 <ChevronLeft size={28} />
               </button>
 
-              {/* Right Button */}
               <button
                 onClick={nextSlide}
                 className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-16 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white p-3 rounded-full transition-all duration-300 disabled:opacity-50 z-10"
@@ -239,7 +253,6 @@ function NashPortfolio() {
               </button>
             </div>
 
-            {/* Mobile Layout - Buttons on top */}
             <div className="flex md:hidden justify-between items-center mb-4">
               <button
                 onClick={prevSlide}
@@ -269,7 +282,6 @@ function NashPortfolio() {
               </button>
             </div>
 
-            {/* Projects Grid */}
             <div className="overflow-hidden">
               <div
                 className="flex transition-transform duration-500 ease-in-out md:px-0"
@@ -277,7 +289,7 @@ function NashPortfolio() {
               >
                 {Array.from({ length: totalSlides }).map((_, slideIndex) => (
                   <div key={slideIndex} className="w-full flex-shrink-0">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-white">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-white">
                       {Data.project
                         .slice(slideIndex * projectsPerSlide, (slideIndex + 1) * projectsPerSlide)
                         .map((project, index) => (
@@ -304,7 +316,7 @@ function NashPortfolio() {
                                     />
                                   </CardItem>
                                   <CardItem translateZ={20} className="w-full mt-2">
-                                    <h3 className="text-neutral-200 text-sm line-clamp-2 h-10 overflow-hidden">
+                                    <h3 className="text-neutral-200 text-sm md:text-base lg:text-sm min-h-[2.5rem] md:min-h-[3rem] lg:min-h-[2.5rem] overflow-hidden">
                                       {project.description}
                                     </h3>
                                     <div className="flex flex-wrap mt-2">
@@ -326,7 +338,6 @@ function NashPortfolio() {
               </div>
             </div>
 
-            {/* Desktop Indicators - Bottom Center */}
             <div className="hidden md:flex justify-center mt-8 space-x-2">
               {Array.from({ length: totalSlides }).map((_, index) => (
                 <button
@@ -341,7 +352,6 @@ function NashPortfolio() {
         </motion.div>
       </div>
 
-      {/* Footer */}
       <div className="flex bg-black items-center justify-center w-full h-screen flex-col px-4 py-20" >
         <motion.div
           className="w-full"
