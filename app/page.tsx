@@ -5,9 +5,10 @@ import { BackgroundLines } from "@/components/ui/background-lines";
 import { Data } from "@/lib/data/data";
 import { ThreeDCardDemo } from "@/components/ui/techstack-card";
 import { FlipWords } from "@/components/ui/footer-card";
-import { Github, Mail, Linkedin, Instagram } from 'lucide-react';
+import { Github, Mail, Linkedin, Instagram, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from "framer-motion";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card"
+import { ChatBot } from "@/components/chats/chatBot";
 
 function NashPortfolio() {
   const [isEducationVisible, setIsEducationVisible] = useState(false);
@@ -20,6 +21,19 @@ function NashPortfolio() {
   const projectRef = useRef(null);
   const contactRef = useRef(null);
   const introRef = useRef(null);
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const projectsPerSlide = 3;
+  const totalSlides = Math.ceil(Data.project.length / projectsPerSlide);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
 
   useEffect(() => {
     const observerEduc = new IntersectionObserver(
@@ -77,7 +91,7 @@ function NashPortfolio() {
 
   return (
     <div className="bg-black">
-
+      <ChatBot/>
       {/* Wrap in div of h-screen and w-full to contain the background lines */}
       <div className="relative w-full h-screen">
         <BackgroundLines className="absolute inset-0 w-full h-full bg-black">
@@ -199,59 +213,134 @@ function NashPortfolio() {
           animate={isProjectVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-r from-blue-300 via-indigo-400 to-violet-400
-     text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
+          <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-r from-blue-300 via-indigo-400 to-violet-400 text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
             Projects I've worked with.
           </h2>
-          <div className="container mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-2 justify-center text-white">
-              {Data.project.map((project, index) => (
-                <motion.div
-                  className="h-full"
+
+          <div className="container mx-auto relative">
+            {/* Desktop Layout - Buttons on sides */}
+            <div className="hidden md:block">
+              {/* Left Button */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-16 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white p-3 rounded-full transition-all duration-300 disabled:opacity-50 z-10"
+                disabled={currentSlide === 0}
+              >
+                <ChevronLeft size={28} />
+              </button>
+
+              {/* Right Button */}
+              <button
+                onClick={nextSlide}
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-16 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white p-3 rounded-full transition-all duration-300 disabled:opacity-50 z-10"
+                disabled={currentSlide === totalSlides - 1}
+              >
+                <ChevronRight size={28} />
+              </button>
+            </div>
+
+            {/* Mobile Layout - Buttons on top */}
+            <div className="flex md:hidden justify-between items-center mb-4">
+              <button
+                onClick={prevSlide}
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white p-2 rounded-full transition-all duration-300 disabled:opacity-50"
+                disabled={currentSlide === 0}
+              >
+                <ChevronLeft size={24} />
+              </button>
+
+              <div className="flex space-x-2">
+                {Array.from({ length: totalSlides }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index ? 'bg-blue-500' : 'bg-gray-600'
+                      }`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={nextSlide}
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white p-2 rounded-full transition-all duration-300 disabled:opacity-50"
+                disabled={currentSlide === totalSlides - 1}
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
+
+            {/* Projects Grid */}
+            <div className="overflow-hidden">
+              <div
+                className="flex transition-transform duration-500 ease-in-out md:px-0"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+                  <div key={slideIndex} className="w-full flex-shrink-0">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-white">
+                      {Data.project
+                        .slice(slideIndex * projectsPerSlide, (slideIndex + 1) * projectsPerSlide)
+                        .map((project, index) => (
+                          <motion.div
+                            className="h-full"
+                            key={slideIndex * projectsPerSlide + index}
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={isProjectVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+                            transition={{ duration: 0.5, delay: index * 0.2 + 0.3, ease: "easeOut" }}
+                          >
+                            <CardContainer className="w-full h-full" containerClassName="w-full h-full">
+                              <a href={project.link} className="block h-full">
+                                <CardBody className="bg-gradient-to-b from-zinc-900 to-slate-900 rounded-md p-4 w-full h-full flex flex-col hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300">
+                                  <CardItem translateZ={20} className="w-full">
+                                    <h1 className="text-white bg-gradient-to-b text-lg sm:text-lg md:text-xl lg:text-2xl font-sans font-bold mb-2 overflow-hidden text-ellipsis">
+                                      {project.title}
+                                    </h1>
+                                  </CardItem>
+                                  <CardItem translateZ={50} className="w-full flex-grow aspect-video">
+                                    <img
+                                      src={project.imageProj}
+                                      alt={project.title}
+                                      className="rounded-md w-full h-full object-cover"
+                                    />
+                                  </CardItem>
+                                  <CardItem translateZ={20} className="w-full mt-2">
+                                    <h3 className="text-neutral-200 text-sm line-clamp-2 h-10 overflow-hidden">
+                                      {project.description}
+                                    </h3>
+                                    <div className="flex flex-wrap mt-2">
+                                      {Object.values(project.techStack).map((tech, techIndex) => (
+                                        <p key={techIndex} className="inline-block m-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-md px-2 py-1 text-white text-xs">
+                                          {tech}
+                                        </p>
+                                      ))}
+                                    </div>
+                                  </CardItem>
+                                </CardBody>
+                              </a>
+                            </CardContainer>
+                          </motion.div>
+                        ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop Indicators - Bottom Center */}
+            <div className="hidden md:flex justify-center mt-8 space-x-2">
+              {Array.from({ length: totalSlides }).map((_, index) => (
+                <button
                   key={index}
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={isProjectVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-                  transition={{ duration: 0.5, delay: index * 0.2 + 0.3, ease: "easeOut" }}
-                >
-                  <CardContainer className="w-full h-full" containerClassName="w-full h-full">
-                    <a href={project.link} className="block h-full">
-                      <CardBody className="bg-gradient-to-b from-zinc-900 to-slate-900 rounded-md p-4 w-full h-full flex flex-col">
-                        <CardItem
-                          translateZ={20}
-                          className="w-full"
-                        >
-                          <h1 className="text-white bg-gradient-to-b text-lg sm:text-lg md:text-xl lg:text-2xl font-sans font-bold mb-2 overflow-hidden text-ellipsis">{project.title}</h1>
-                        </CardItem>
-                        <CardItem
-                          translateZ={50}
-                          className="w-full flex-grow aspect-video"
-                        >
-                          <img
-                            src={project.imageProj}
-                            alt={project.title}
-                            className="rounded-md w-full h-full object-cover"
-                          />
-                        </CardItem>
-                        <CardItem
-                          translateZ={20}
-                          className="w-full mt-2"
-                        >
-                          <h3 className="text-neutral-200 text-sm line-clamp-2 h-10 overflow-hidden">{project.description}</h3>
-                          <div className="flex flex-wrap mt-2">
-                            {Object.values(project.techStack).map((icons, index) => (
-                              <p key={index} className="inline-block m-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-md px-2 py-1 text-white text-xs">{icons}</p>
-                            ))}
-                          </div>
-                        </CardItem>
-                      </CardBody>
-                    </a>
-                  </CardContainer>
-                </motion.div>
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index ? 'bg-blue-500' : 'bg-gray-600'
+                    }`}
+                />
               ))}
             </div>
           </div>
         </motion.div>
       </div>
+
       {/* Footer */}
       <div className="flex bg-black items-center justify-center w-full h-screen flex-col px-4 py-20" >
         <motion.div
