@@ -65,25 +65,21 @@ export const ChatBot = () => {
   const [open, setOpen] = useState(false);
   const [userMessage, setUserMessage] = useState("");
   const [listMessage, setListMessage] = useState([]);
-  const [error, setError] = useState("");
-  const { loading, success, message, chat } = chatState();
+  const { loading, success, error, message, chat } = chatState();
   const scrollRef = useRef(null);
 
   const sendChat = async () => {
     if (!userMessage.trim()) {
-      setError("Please enter a message.");
-      setTimeout(() => setError(""), 3000);
+      setListMessage((prev) => [
+        ...prev,
+        { from: "ai", text: "❗ Please enter a message." },
+      ]);
       return;
     }
 
-    try {
-      setListMessage((prev) => [...prev, { from: "user", text: userMessage }]);
-      setUserMessage("");
-      await chat({ userMessage, listMessage });
-    } catch (err) {
-      setError("Something went wrong. Please try again.");
-      setTimeout(() => setError(""), 3000);
-    }
+    setListMessage((prev) => [...prev, { from: "user", text: userMessage }]);
+    setUserMessage("");
+    await chat({ userMessage });
   };
 
   const handleKeyDown = (e) => {
@@ -97,7 +93,11 @@ export const ChatBot = () => {
     if (message && success) {
       setListMessage((prev) => [...prev, { from: "ai", text: message }]);
     }
-  }, [message]);
+
+    if (error && !success && message) {
+      setListMessage((prev) => [...prev, { from: "ai", text: `❗ ${message}` }]);
+    }
+  }, [message, error, success]);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -196,7 +196,6 @@ export const ChatBot = () => {
           </div>
 
           <div className="p-4 bg-slate-800/90 border-t border-white/10">
-            {error && <p className="text-red-400 text-sm pb-2">{error}</p>}
             <div className="flex items-center space-x-2">
               <div className="flex-1">
                 <textarea
