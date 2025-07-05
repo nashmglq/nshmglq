@@ -79,7 +79,7 @@ export const ChatBot = () => {
 
     setListMessage((prev) => [...prev, { from: "user", text: userMessage }]);
     setUserMessage("");
-    await chat({ userMessage });
+    await chat({ userMessage, listMessage });
   };
 
   const handleKeyDown = (e) => {
@@ -95,7 +95,10 @@ export const ChatBot = () => {
     }
 
     if (error && !success && message) {
-      setListMessage((prev) => [...prev, { from: "ai", text: `❗ ${message}` }]);
+      setListMessage((prev) => [
+        ...prev,
+        { from: "ai", text: `❗ ${message}` },
+      ]);
     }
   }, [message, error, success]);
 
