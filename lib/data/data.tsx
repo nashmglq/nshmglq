@@ -62,10 +62,12 @@ export const Data = {
          title: "Databases",
          logoUrl: {
             logo1: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
-            logo2: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+            logo2: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+            logo3: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
          },
-         description: "I use MySQL and PostgreSQL for my project databases because of their reliability, flexibility, and strong support for structured data."
+         description: "I use MySQL, PostgreSQL, and MongoDB for my project databases because of their reliability, flexibility, and strong support for both structured and unstructured data."
       }
+
       ,
       {
          title: "External Tools",
@@ -128,7 +130,5 @@ export const Data = {
          link: "https://github.com/nashmglq/casita-s"
       }
    ]
-
-
 
 }
