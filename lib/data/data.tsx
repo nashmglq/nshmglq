@@ -91,7 +91,7 @@ export const Data = {
          title: "Budge-It Buddy",
          imageProj: "images/projects/budge-it.png",
          description: "Your AI-powered financial wellness companion — a hackathon entry for BPI DataWave.",
-         techStack: ["Express", "Node.js", "PostgreSQL", "React"],
+         techStack: ["Express", "Node.js", "PostgreSQL", "React", "Gemini (Google AI)"],
          link: "https://github.com/nashmglq/budge-it-buddy"
 
       },
@@ -114,7 +114,7 @@ export const Data = {
          title: "Streak",
          imageProj: "images/projects/streak.png",
          description: "Streak: an AI-powered streak counter, motivator, and health assistant.",
-         techStack: ["Express", "Node.js", "React", "Gemini (Google AI)"],
+         techStack: ["Express", "Node.js", "React", "PostgreSQL", "Gemini (Google AI)"],
          link: "https://github.com/nashmglq/streak"
       },
       {
