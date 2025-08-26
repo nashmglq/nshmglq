@@ -82,15 +82,24 @@ export const Data = {
       {
          title: "Y",
          imageProj: "images/projects/ySS.png",
-         description: "This is my first full-stack project, a social media platform for sharing thoughts and opinions.",
+         description: "A full-stack social media platform designed for sharing thoughts and opinions.",
          techStack: ["Express", "Node.js", "MySQL", "React"],
          link: "https://github.com/nashmglq/y"
 
       },
+            {
+         title: "Budge-It Buddy",
+         imageProj: "images/projects/budge-it.png",
+         description: "Your AI-powered financial wellness companion — a hackathon entry for BPI DataWave.",
+         techStack: ["Express", "Node.js", "PostgreSQL", "React"],
+         link: "https://github.com/nashmglq/budge-it-buddy"
+
+      },
+
       {
          title: "J3J3PT",
          imageProj: "images/projects/j3j3ptSS.png",
-         description: "This is my first AI-integrated full-stack project: a 'Jejemon' chatbot for playful conversations.",
+         description: "An AI-integrated full-stack project: a “Jejemon” chatbot designed for playful and entertaining conversations.",
          techStack: ["Express", "Node.js", "React", "Gemini (Google AI)"],
          link: "https://github.com/nashmglq/j3j3pt"
       },
