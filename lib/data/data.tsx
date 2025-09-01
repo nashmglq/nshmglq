@@ -87,7 +87,15 @@ export const Data = {
          link: "https://github.com/nashmglq/y"
 
       },
-            {
+      {
+         title: "Reelay",
+         imageProj: "images/projects/reelay-ss.png",
+         description: "AI-Powered Script and Image Generator for Short-Form Videos",
+         techStack: ["Express", "Node.js", "PostgreSQL", "React", "Gemini (Google AI)"],
+         link: "https://github.com/nashmglq/Reelay"
+
+      },
+      {
          title: "Budge-It Buddy",
          imageProj: "images/projects/budge-it.png",
          description: "Your AI-powered financial wellness companion — a hackathon entry for BPI DataWave.",
@@ -95,7 +103,6 @@ export const Data = {
          link: "https://github.com/nashmglq/budge-it-buddy"
 
       },
-
       {
          title: "J3J3PT",
          imageProj: "images/projects/j3j3ptSS.png",
